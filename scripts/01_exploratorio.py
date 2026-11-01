@@ -3,12 +3,13 @@
 import pandas as pd
 import janitor
 import plotly.graph_objects as go
+from pathlib import Path
 
 # Carga y parseo de datos ----
 
 datos_fluke = (
     pd.read_csv(
-        filepath_or_buffer = "data/original_fluke.csv",
+        filepath_or_buffer = "./data/original_fluke.csv",
         encoding = "latin1",
         sep = ";",
         decimal = ",",
@@ -229,13 +230,25 @@ fig_freq.update_layout(
     yaxis = {"hoverformat": ".2f", "ticksuffix": " Hz"},
 )
 
-# Salida de gráficos
+# Exportación de gráficos
 
-for fig in [
-    fig_tension_linea,
-    #fig_tension_neutro,
-    #fig_corriente_linea,
-    #fig_corriente_neutro,
-    #fig_freq,
-]:
-    fig.show(config = {'scrollZoom': True})
+graficos = {
+    "Tensiones de linea": fig_tension_linea,
+    "Tension de neutro": fig_tension_neutro,
+    "Corrientes de linea": fig_corriente_linea,
+    "Corriente de neutro": fig_corriente_neutro,
+    "Frecuencia": fig_freq,
+}
+
+Path("./output").mkdir(exist_ok = True)
+
+for nombre, fig in graficos.items():
+    fig.write_html(
+        file = f"output/{nombre}.html",
+        config = {"scrollZoom": True},
+        auto_open = False,
+        full_html = True,
+        include_plotlyjs = 'cdn'
+    )
+
+    
