@@ -10,3 +10,5 @@ __pycache__/
 
 activador_venv.txt
 info_calidad.txt
+columnas_fluke.csv
+output/
