@@ -4,10 +4,9 @@
 # Archivos generados por Python
 __pycache__/
 *.py[cod]
-
-# Pruebas y archivos temporales
 .pytest_cache/
 
-# Configuración y secretos
-.env
-.streamlit/secrets.toml
+# Archivos propios
+
+activador_venv.txt
+info_calidad.txt
