@@ -1,6 +1,6 @@
 # 📈 Análisis de calidad de la energía ⚡
 
-## Ejecución del proyecto
+## Hito intermedio - Análisis Exploratorio
 
 Para ejecutar el análisis, es necesario ubicarse en el directorio raíz del repositorio.
 
